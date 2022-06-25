@@ -1,5 +1,4 @@
 const { Product } = require("../../models");
-const { NotFound } = require("http-errors");
 
 const getAll = async (req, res) => {
   const result = await Product.find();
