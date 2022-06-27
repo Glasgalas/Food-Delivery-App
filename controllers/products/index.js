@@ -3,6 +3,7 @@ const getById = require("./getById");
 const add = require("./add");
 const updateById = require("./update");
 const removeById = require("./remove");
+const updateImage = require("./updateImage");
 
 module.exports = {
   getAll,
@@ -10,4 +11,5 @@ module.exports = {
   add,
   updateById,
   removeById,
+  updateImage,
 };
