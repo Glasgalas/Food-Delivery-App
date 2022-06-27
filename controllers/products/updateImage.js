@@ -14,7 +14,7 @@ const updateImage = async (req, res) => {
   try {
     const resultUpload = path.join(imageDir, imageName);
     await fs.rename(tempUpload, resultUpload);
-    const imageURL = path.join("public", "images", "products", imageName);
+    const imageURL = path.join("images", "products", imageName);
     await Product.findByIdAndUpdate(id, { imageURL });
     res.json({ imageURL });
   } catch (error) {
