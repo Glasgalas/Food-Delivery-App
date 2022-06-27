@@ -2,7 +2,7 @@ const { Product } = require("../../models");
 const path = require("path");
 const fs = require("fs/promises");
 
-const imageDir = path.join(__dirname, "../../", "public", "images", "products");
+const imageDir = path.join(__dirname, "../../", "images", "products");
 
 const updateImage = async (req, res) => {
   const { path: tempUpload, originalname } = req.file;
