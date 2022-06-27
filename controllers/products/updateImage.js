@@ -6,7 +6,7 @@ const imageDir = path.join(__dirname, "../../", "images", "products");
 
 const updateImage = async (req, res) => {
   const { path: tempUpload, originalname } = req.file;
-  const indx = originalname.indexOf(".");
+  const indx = originalname.lastIndexOf(".");
   const imageType = originalname.slice(indx);
   console.log(imageType);
   const { id } = req.params;
