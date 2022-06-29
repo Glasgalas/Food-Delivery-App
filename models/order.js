@@ -34,11 +34,11 @@ const orderSchema = Schema(
     },
     cartTotalQuantity: {
       type: Number,
-      requiered: false,
+      requiered: true,
     },
     cartTotalAmount: {
       type: Number,
-      requiered: false,
+      requiered: true,
     },
     owner: {
       type: Schema.Types.ObjectId,
@@ -64,8 +64,8 @@ const joiOrderSchema = Joi.object({
   }),
   address: Joi.string().required(),
   products: Joi.array().required(),
-  cartTotalQuantity: Joi.string().required(),
-  cartTotalAmount: Joi.string().required(),
+  cartTotalQuantity: Joi.number().required(),
+  cartTotalAmount: Joi.number().required(),
 });
 
 const Order = model("order", orderSchema);
