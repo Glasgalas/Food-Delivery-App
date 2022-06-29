@@ -33,11 +33,11 @@ const orderSchema = Schema(
       requiered: true,
     },
     cartTotalQuantity: {
-      type: String,
+      type: Number,
       requiered: true,
     },
     cartTotalAmount: {
-      type: String,
+      type: Number,
       requiered: true,
     },
     owner: {
