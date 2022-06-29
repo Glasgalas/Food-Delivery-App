@@ -3,12 +3,12 @@ const { User } = require("../../models");
 const { NotFound } = require("http-errors");
 
 const getByEmail = async (req, res) => {
-  const { value } = req.body;
-  const user = await User.findOne({ email: value });
+  const { email } = req.body;
+  const user = await User.findOne({ email: email });
   if (!user) {
-    throw new NotFound(`Contact with email=${value} not found`);
+    throw new NotFound(`Contact with email=${email} not found`);
   }
-  const result = await Order.find({ email: value });
+  const result = await Order.find({ email: email });
 
   // let result;
   // if (value.includes("@")) {
