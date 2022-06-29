@@ -32,6 +32,14 @@ const orderSchema = Schema(
       type: Array,
       requiered: true,
     },
+    cartTotalQuantity: {
+      type: String,
+      requiered: true,
+    },
+    cartTotalAmount: {
+      type: String,
+      requiered: true,
+    },
     owner: {
       type: Schema.Types.ObjectId,
       ref: "user",
@@ -52,10 +60,12 @@ const joiOrderSchema = Joi.object({
     }),
   phone: Joi.string().required().pattern(codeRegexp).messages({
     "string.pattern.base":
-      "Phone number fails to match the required pattern: +(38) 096-898-1234",
+      "Phone number fails to match the required pattern: 096-898-1234",
   }),
   address: Joi.string().required(),
   products: Joi.array().required(),
+  cartTotalQuantity: Joi.string().required(),
+  cartTotalAmount: Joi.string().required(),
 });
 
 const Order = model("order", orderSchema);
