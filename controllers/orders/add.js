@@ -3,7 +3,15 @@ const { User } = require("../../models");
 const moment = require("moment");
 
 const add = async (req, res) => {
-  const { name, email, phone, address, products } = req.body;
+  const {
+    name,
+    email,
+    phone,
+    address,
+    products,
+    cartTotalQuantity,
+    cartTotalAmount,
+  } = req.body;
 
   const shortVal = Math.floor(1000 + Math.random() * 9000);
   const date = moment().format("_DD-MM-YYYY-hh-mm");
@@ -11,7 +19,13 @@ const add = async (req, res) => {
 
   const user = await User.findOne({ email });
   if (!user) {
-    await User.create({ name, email, phone, address });
+    console.log("створюємо нового користувача");
+    await User.create({
+      name,
+      email,
+      phone,
+      address,
+    });
   }
   const oldOrders = user?.orders || [];
   const newOrders = [...oldOrders, orderNumber];
@@ -32,6 +46,8 @@ const add = async (req, res) => {
     address,
     products,
     owner: userNew,
+    cartTotalQuantity,
+    cartTotalAmount,
   });
 
   res.status(200).json({
