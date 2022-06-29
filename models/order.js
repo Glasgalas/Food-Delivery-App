@@ -34,11 +34,11 @@ const orderSchema = Schema(
     },
     cartTotalQuantity: {
       type: Number,
-      requiered: true,
+      requiered: false,
     },
     cartTotalAmount: {
       type: Number,
-      requiered: true,
+      requiered: false,
     },
     owner: {
       type: Schema.Types.ObjectId,
