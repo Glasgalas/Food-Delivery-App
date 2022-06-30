@@ -6,7 +6,7 @@ const { joiOrderSchema } = require("../../models/order");
 
 const router = express.Router();
 
-router.get("/", ctrlWrapper(ctrl.getByNumber));
+router.get("/", ctrlWrapper(ctrl.getAll));
 
 router.post("/", validation(joiOrderSchema), ctrlWrapper(ctrl.add));
 

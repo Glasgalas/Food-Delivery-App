@@ -4,6 +4,7 @@ const { NotFound } = require("http-errors");
 
 const getByEmail = async (req, res) => {
   const { email } = req.body;
+  console.log(email);
   const user = await User.findOne({ email: email });
   if (!user) {
     throw new NotFound(`Contact with email=${email} not found`);
