@@ -32,8 +32,8 @@ const userSchema = Schema(
 );
 
 const joiSchema = Joi.object({
-  name: Joi.string().alphanum().min(3).max(30).required().message({
-    "string.base": "The name field must consist of at least 3 letters",
+  name: Joi.string().min(3).max(30).message({
+    "any.required": "The name field must consist of at least 3 letters",
   }),
   email: Joi.string()
     .required()
@@ -43,14 +43,18 @@ const joiSchema = Joi.object({
     })
     .message({
       "string.base": "Invalid mail",
-    }),
+    })
+    .required(),
   phone: Joi.string().required().pattern(codeRegexp).messages({
     "string.pattern.base":
       "Phone number fails to match the required pattern: 0968981234",
   }),
-  address: Joi.string().min(3).required().message({
-    "string.base": "The address field must consist of at least 3 letters",
-  }),
+  address: Joi.string()
+    .min(3)
+    .message({
+      "string.base": "The address field must consist of at least 3 letters",
+    })
+    .required(),
 });
 
 const User = model("user", userSchema);

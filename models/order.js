@@ -48,9 +48,13 @@ const orderSchema = Schema(
 
 const joiOrderSchema = Joi.object({
   number: Joi.string(),
-  name: Joi.string().min(3).max(30).required().message({
-    "string.base": "The name field must consist of at least 3 letters",
-  }),
+  name: Joi.string()
+    .min(3)
+    .max(30)
+    .message({
+      "string.base": "The name field must consist of at least 3 letters",
+    })
+    .required(),
   email: Joi.string()
     .required()
     .email({
@@ -64,9 +68,12 @@ const joiOrderSchema = Joi.object({
     "string.pattern.base":
       "Phone number fails to match the required pattern: 0968981234",
   }),
-  address: Joi.string().min(3).required().message({
-    "string.base": "The address field must consist of at least 3 letters",
-  }),
+  address: Joi.string()
+    .min(3)
+    .message({
+      "string.base": "The address field must consist of at least 3 letters",
+    })
+    .required(),
   products: Joi.array().required(),
   cartTotalQuantity: Joi.number().required(),
   cartTotalAmount: Joi.number().required(),
