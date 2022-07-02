@@ -32,18 +32,25 @@ const userSchema = Schema(
 );
 
 const joiSchema = Joi.object({
-  name: Joi.string().required(),
+  name: Joi.string().alphanum().min(3).max(30).required().message({
+    "string.base": "The name field must consist of at least 3 letters",
+  }),
   email: Joi.string()
     .required()
     .email({
       minDomainSegments: 2,
       tlds: { allow: ["com", "net", "ua"] },
+    })
+    .message({
+      "string.base": "Invalid mail",
     }),
   phone: Joi.string().required().pattern(codeRegexp).messages({
     "string.pattern.base":
-      "Phone number fails to match the required pattern: +(38) 096-898-1234",
+      "Phone number fails to match the required pattern: 0968981234",
   }),
-  address: Joi.string().required(),
+  address: Joi.string().min(3).required().message({
+    "string.base": "The address field must consist of at least 3 letters",
+  }),
 });
 
 const User = model("user", userSchema);
