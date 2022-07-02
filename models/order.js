@@ -1,7 +1,6 @@
 const Joi = require("joi");
 const { Schema, model } = require("mongoose");
 
-// const codeRegexp = /^\+\(\d{2}\) \d{3}-\d{3}-\d{4}$/;
 const codeRegexp = /^\d{10}$/;
 
 const orderSchema = Schema(

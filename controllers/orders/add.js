@@ -19,7 +19,6 @@ const add = async (req, res) => {
 
   const user = await User.findOne({ email });
   if (!user) {
-    console.log("створюємо нового користувача");
     await User.create({
       name,
       email,

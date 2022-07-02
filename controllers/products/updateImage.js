@@ -8,7 +8,6 @@ const updateImage = async (req, res) => {
   const { path: tempUpload, originalname } = req.file;
   const indx = originalname.lastIndexOf(".");
   const imageType = originalname.slice(indx);
-  console.log(imageType);
   const { id } = req.params;
   const imageName = `img_${id}${imageType}`;
   try {
